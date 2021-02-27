@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
-import { User } from './User'
-const { Schema } = 'mongoose'
+import  User  from './User'
+import {Schema} from 'mongoose'
 
-const ApplicantSchema = User.discriminator('Applicant', 
-    new Schema({
+export default User.discriminator('Applicant', 
+    new mongoose.Schema({
        savedListings: [{ type: mongoose.Types.ObjectId, ref: 'JobListing' }],
        skills: [String],
        workHistory: [String],
@@ -11,4 +11,3 @@ const ApplicantSchema = User.discriminator('Applicant',
     })
 )
 
-module.exports = mongoose.model('Applicant', ApplicantSchema);

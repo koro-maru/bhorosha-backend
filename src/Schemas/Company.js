@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
-import { User } from './User'
-const { Schema } = 'mongoose'
+import  User  from './User'
+import {Schema} from 'mongoose'
 
-const CompanySchema = User.discriminator('Company', 
+export default User.discriminator('Company', 
     new Schema({
        jobListings: [{ type: mongoose.Types.ObjectId, ref: 'JobListing' }],
        skillsRequired: [String],
@@ -10,5 +10,3 @@ const CompanySchema = User.discriminator('Company',
        hiring: Boolean
     })
 )
-
-module.exports = mongoose.model('Applicant', ApplicantSchema);

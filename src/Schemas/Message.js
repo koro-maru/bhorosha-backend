@@ -1,10 +1,10 @@
 import mongoose from 'mongoose'
 import {User} from './User'
-const {Schema} = 'mongoose'
+import {Schema} from 'mongoose'
 
 const MessageSchema = new Schema({
-    sender: {type: User},
-    reciever: {type: User},
+    sender: { type: mongoose.Types.ObjectId, ref: 'User' },
+    recipient: { type: mongoose.Types.ObjectId, ref: 'User' },
     body: String,
     dateSent: {type: Date, default: Date.now}
 })

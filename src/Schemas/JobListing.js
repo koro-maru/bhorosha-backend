@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 import Company from './Company'
-const {Schema} = 'mongoose'
+import {Schema} from 'mongoose'
 
 const ListingSchema = new Schema({
-    creator: {type: Company},
+    creator: {type: mongoose.Types.ObjectId, ref: "Company", required: true},
     skillsRequired: [String],
-    details: String,
+    details: {type: String, required: true},
     dateStart: Date,
     dateEnd: Date
 })

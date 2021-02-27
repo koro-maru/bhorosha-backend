@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-const {Schema} = 'mongoose'
+import {Schema} from 'mongoose'
 
-const UserSchema = new Schema({
+const UserSchema =  new Schema({
     name: String,
     phone: String,
     email: String,
@@ -9,9 +9,9 @@ const UserSchema = new Schema({
     dateOfBirth: Date,
     password: String,
     address: String,
-    savedUsers: [{type: mongoose.Types.ObjectId, ref: 'User'}], //I.E, following
-    chatMessages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }],
-    roles: [String],
+    savedUsers: [{type: mongoose.Types.ObjectId, ref: 'User', default:[]}], //I.E, following
+    chatMessages: [{ type: mongoose.Types.ObjectId, ref: 'Message', default: []}],
+    roles: String,
     isActive: Boolean //Has completed email confirmation/not 
 })
 
