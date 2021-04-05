@@ -95,13 +95,14 @@ router
 
   //MIDDLEWARE FOR EMAIL VERIFICATION, AUTHORIZATION
 
-  .post('/sign_in', async (ctx, next) => {
-    return passport.authenticate('local', (err, user) => {
-      if (user === false) {
+  .post('/sign_in', (ctx, next) => {
+    return passport.authenticate('local', (user, err) => {
+      if (!user) {
+        console.log("ERROR: ", err)
         ctx.body = { 401: "Unauthorized" };
       } else {
         ctx.body = { 200: "Success" };
-        return ctx.login(user)
+        ctx.login(user);
       }
     })(ctx, next)
   })
